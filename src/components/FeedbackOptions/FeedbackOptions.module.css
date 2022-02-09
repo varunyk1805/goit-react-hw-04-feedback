@@ -1,0 +1,14 @@
+.button {
+  font-weight: 700;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+  transition: transform 300ms linear;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.2);
+}
