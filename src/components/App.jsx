@@ -12,13 +12,6 @@ export default class App extends Component {
         bad: 0,
     };
 
-    options = ['Good', 'Neutral', 'Bad'];
-    message = 'There is no feedback';
-
-    // capitalizeFirstLetter = str => {
-    //     return `${str[0].toUpperCase()}${str.slice(1)}`;
-    // };
-
     countTotalFeedback = () => {
         return Object.values(this.state)
         .reduce((acc, value) => acc += value, 0)
@@ -39,7 +32,8 @@ export default class App extends Component {
 
     render() { 
         const { good, neutral, bad } = this.state;
-        const { options, onLeaveFeedback, message, countTotalFeedback, countPositiveFeedbackPercentage } = this;
+        const { onLeaveFeedback, countTotalFeedback, countPositiveFeedbackPercentage, state } = this;
+        const options = Object.keys(state);
     
         const total = countTotalFeedback();
         const positivePercentage = countPositiveFeedbackPercentage();
@@ -48,7 +42,7 @@ export default class App extends Component {
                 <Section title='Please leave feedback'>
                     <FeedbackOptions 
                         options={options}
-                        onLeaveFeedback={onLeaveFeedback}
+                        onClick={onLeaveFeedback}
                     />
                 </Section>
                 <Section title='Statistics'>
@@ -63,7 +57,7 @@ export default class App extends Component {
                         />
                         :
                         <Notification
-                            message={message}
+                            message='There is no feedback'
                         />
                     }
                 </Section>
